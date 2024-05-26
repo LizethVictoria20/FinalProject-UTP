@@ -64,25 +64,29 @@
 
 (define (teclado x y tecla)
 ;límites
-  (if(< x 0)
+  (cond
+    [(< x 0)
      (begin
        (pacMan 0 y 'izq)
        (teclado 0 y (key-value(get-key-press ventana))))
-
-   (if(> x 540)
+    ]
+    [(> x 540)
      (begin
        (pacMan 540 y 'izq)
        (teclado 540 y (key-value(get-key-press ventana))))
-
-    (if(< y 0)
+    ]
+    [(< y 0)
      (begin
        (pacMan x 0 'ar)
        (teclado x 0 (key-value(get-key-press ventana))))
-     
-    (if(> y 540)
+    ]
+    [(> y 540)
      (begin
        (pacMan x 540  'ar)
        (teclado x 540 (key-value(get-key-press ventana))))
+    ]
+  )
+
 
 ;evento teclado
     
@@ -109,9 +113,9 @@
       
 ;si no se cumplen las  anteriores, un "else" para que no me haga nada
       (teclado x y (key-value(get-key-press ventana)
-        ))))))))))
+        )))))))
     
-)
+
 ;nuevamente el copy-viewport
 (copy-viewport ventana2 ventana)
 ((clear-viewport ventana2))
