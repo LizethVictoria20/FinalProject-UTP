@@ -85,36 +85,33 @@
        (pacMan x 540  'ar)
        (teclado x 540 (key-value(get-key-press ventana))))
     ]
-  )
-
-
-;evento teclado
-    
-  (if (equal? tecla 'up)
+    [(equal? tecla 'up)
       (begin
         (pacMan x (- y 10)'ar)
         (teclado x (- y 10)(key-value(get-key-press ventana))))
-
-      
-  (if (equal? tecla 'down)
+    ]
+    [(equal? tecla 'down)
       (begin
         (pacMan x (+ y 10)'ab)
         (teclado x (+ y 10)(key-value(get-key-press ventana))))
-
-  (if (equal? tecla 'left)
+    ]
+    [(equal? tecla 'left)
       (begin
         (pacMan (- x 10) y 'izq)
         (teclado (- x 10) y (key-value(get-key-press ventana))))
-
-   (if (equal? tecla 'right)
+    ]
+    [(equal? tecla 'right)
       (begin
         (pacMan (+ x 10) y 'der)
         (teclado (+ x 10) y (key-value(get-key-press ventana))))
-      
-;si no se cumplen las  anteriores, un "else" para que no me haga nada
-      (teclado x y (key-value(get-key-press ventana)
-        )))))))
-    
+    ]
+    [else
+      ;si no se cumplen las  anteriores, un "else" para que no me haga nada
+      (teclado x y (key-value(get-key-press ventana)))
+    ]
+
+  )
+)
 
 ;nuevamente el copy-viewport
 (copy-viewport ventana2 ventana)
