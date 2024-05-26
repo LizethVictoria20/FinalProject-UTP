@@ -85,14 +85,16 @@
        (pacMan x 540  'ar)
        (teclado x 540 (key-value(get-key-press ventana))))
     ]
+
+    ;evento teclado
     [(equal? tecla 'up)
       (begin
-        (pacMan x (- y 10)'ar)
+        (pacMan x (- y 10) 'ar)
         (teclado x (- y 10)(key-value(get-key-press ventana))))
     ]
     [(equal? tecla 'down)
       (begin
-        (pacMan x (+ y 10)'ab)
+        (pacMan x (+ y 10) 'ab)
         (teclado x (+ y 10)(key-value(get-key-press ventana))))
     ]
     [(equal? tecla 'left)
