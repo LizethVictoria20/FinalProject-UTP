@@ -24,34 +24,38 @@
 
 
 (define (pacMan x y lado)
-  (if
-   (equal? lado 'ar)
-    (begin
-     ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink"))
-
-  (if
-   (equal? lado 'ab)
-    (begin
-    ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink"))
-
-   (if
-   (equal? lado 'izq)
-    (begin
-     ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink"))
-
-    (if
-   (equal? lado 'der)
-    (begin
-     ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink"))
-
-
+  ;Se usa if porque queremos que solo una orden se ejecute y solo una sea true.
+  (cond
+    [(equal? lado 'ar)
+      (begin
+        ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+    )]
+    [(equal? lado 'ab)
+        (begin
+          ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+        )
+    ]
+    [(equal? lado 'izq)
+      (begin
+        ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+      )
+    ]
+    [(equal? lado 'der)
+      (begin
+        ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+      )
+    ]
+    [else
+      (void)
+    ]
+  )
+  
 ;si no se cumplen ningunas de las cond anteriores, usamos (void) para que no haga nada
-     (void)
-     ))))
-; se usa copy-viewport para pasar todo lo de ventana2 a la ventana principal 
+
+  ; se usa copy-viewport para pasar todo lo de ventana2 a la ventana principal 
   (copy-viewport ventana2 ventana)
   ((clear-viewport ventana2))
-  )
+)
 
 ;Eventos en el teclado para darle el movimiento usando key-value
 ;La logica es que cuando se mueva a la derecha vaya sumando en el eje x y cuando se mueva a la izq reste en el eje
