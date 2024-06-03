@@ -87,38 +87,6 @@
        (teclado x 540 (key-value(get-key-press ventana))))
     ]
 
-    [(and(< x 118)(and(> y 125)(< y 500)))
-     (begin
-       (pacMan 118 y 'izq)
-       (teclado 118 y (key-value(get-key-press ventana))))
-    ]
-    [(and(> x 417)(and(> y 125)(< y 500)))
-     (begin
-       (pacMan 417 y 'izq)
-       (teclado 417 y (key-value(get-key-press ventana))))
-    ]
-    [(and (and(> y 76)(< y 110))(and(> x 105)(< x 260)))
-     (begin
-       (pacMan x 76 'ab)
-       (teclado x 76 (key-value(get-key-press ventana))))
-    ]
-    [(and (and(> y 127)(< y 144))(and(> x 105)(< x 260)))
-     (begin
-       (pacMan x 144 'ab)
-       (teclado x 144 (key-value(get-key-press ventana))))
-    ]
-    
-    [(and (and(> y 76)(< y 110))(and(> x 105)(< x 260)))
-     (begin
-       (pacMan x 76 'ab)
-       (teclado x 76 (key-value(get-key-press ventana))))
-    ]
-    [(and (and(> y 127)(< y 144))(and(> x 105)(< x 260)))
-     (begin
-       (pacMan x 144 'ab)
-       (teclado x 144 (key-value(get-key-press ventana))))
-    ]
-    
     ;evento teclado
     [(equal? tecla 'up)
       (begin
