@@ -15,18 +15,24 @@
 
 
 ;Intregro el logo (muñeco de pacman)
- ((draw-solid-ellipse ventana) (make-posn 50 40) 20 20 "pink")
+;  ((draw-solid-ellipse ventana) (make-posn 50 40) 20 20 "yellow")
 ;((draw-pixmap ventana2) logo (make-posn 50 40))
 
 
 ;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo) 
 ;Usando begin porque son varias acciones las que se van a cubrir
 
+; ; Dibujar las paredes
+; (define (Walls) 
+;   ((draw-line ventana2) (make-posn 0 30)(make-posn 0 570)  10 590 (make-rgb 0 0 1))
+;   ; ((draw-solid-line ventana2) (make-posn 0 30)(make-posn 0 570) 10 590 (make-rgb 0 0 1))
+; )
+
 
 (define (pacMan x y lado)
   ;Se usa if porque queremos que solo una orden se ejecute y solo una sea true.
   (cond
-    [(equal? lado 'ar)
+    [(equal? lado 'ar) ;Referencia 
       (begin
         ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
     )]
@@ -49,6 +55,8 @@
       (void)
     ]
   )
+      ; (Walls)
+
   
 ;si no se cumplen ningunas de las cond anteriores, usamos (void) para que no haga nada
 
