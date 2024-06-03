@@ -10,13 +10,16 @@
 
 (define ventana2 (open-pixmap "ventana-invisible" 600 600))
 ;diseño del fondo con pixmap para crgar archivos jpg y png
-(define fondo "pacman.png")
-((draw-pixmap ventana2) fondo (make-posn 0 0))
+; (define fondo "pacman.png")
+; ((draw-pixmap ventana2) fondo (make-posn 0 0))
 
+;Intregro el logo (muñeco de pacman)
+(define logo "/Users/lizfranco/UTP/Programacion/ProyectoFinal/pacman.png")
+((draw-pixmap ventana2) logo (make-posn 50 40))
 
 ;Intregro el logo (muñeco de pacman)
 ;  ((draw-solid-ellipse ventana) (make-posn 50 40) 20 20 "yellow")
-;((draw-pixmap ventana2) logo (make-posn 50 40))
+; ((draw-pixmap ventana2) logo (make-posn 50 40))
 
 
 ;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo) 
@@ -30,32 +33,30 @@
 
 
 (define (pacMan x y lado)
-  ;Se usa if porque queremos que solo una orden se ejecute y solo una sea true.
   (cond
-    [(equal? lado 'ar) ;Referencia 
+    [(equal? lado 'ar)
       (begin
-        ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+        ((draw-pixmap ventana2) logo (make-posn x y))
     )]
     [(equal? lado 'ab)
         (begin
-          ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+          ((draw-pixmap ventana2) logo (make-posn x y))
         )
     ]
     [(equal? lado 'izq)
       (begin
-        ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+        ((draw-pixmap ventana2) logo (make-posn x y))
       )
     ]
     [(equal? lado 'der)
       (begin
-        ((draw-solid-ellipse ventana2) (make-posn x y) 20 20 "pink")
+        ((draw-pixmap ventana2) logo (make-posn x y))
       )
     ]
     [else
       (void)
     ]
   )
-      ; (Walls)
 
   
 ;si no se cumplen ningunas de las cond anteriores, usamos (void) para que no haga nada
