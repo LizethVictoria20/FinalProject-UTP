@@ -10,61 +10,53 @@
 
 (define ventana2 (open-pixmap "ventana-invisible" 600 600))
 ;diseño del fondo con pixmap para crgar archivos jpg y png
-; (define fondo "pacman.png")
-; ((draw-pixmap ventana2) fondo (make-posn 0 0))
+(define fondo "fondo.jpg")
+((draw-pixmap ventana) fondo (make-posn 0 0))
+
 
 ;Intregro el logo (muñeco de pacman)
-(define logo "/Users/lizfranco/UTP/Programacion/ProyectoFinal/pacman.png")
-((draw-pixmap ventana2) logo (make-posn 50 40))
-
-;Intregro el logo (muñeco de pacman)
-;  ((draw-solid-ellipse ventana) (make-posn 50 40) 20 20 "yellow")
-; ((draw-pixmap ventana2) logo (make-posn 50 40))
+(define logo "pacman.png")
+((draw-pixmap ventana) logo (make-posn 50 40))
 
 
 ;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo) 
 ;Usando begin porque son varias acciones las que se van a cubrir
 
-; ; Dibujar las paredes
-; (define (Walls) 
-;   ((draw-line ventana2) (make-posn 0 30)(make-posn 0 570)  10 590 (make-rgb 0 0 1))
-;   ; ((draw-solid-line ventana2) (make-posn 0 30)(make-posn 0 570) 10 590 (make-rgb 0 0 1))
-; )
-
 
 (define (pacMan x y lado)
+  ;Se usa if porque queremos que solo una orden se ejecute y solo una sea true.
   (cond
-    [(equal? lado 'ar)
+    [(equal? lado 'ar) ;Referencia 
       (begin
-        ((draw-pixmap ventana2) logo (make-posn x y))
+      ((draw-pixmap ventana2) fondo (make-posn 0 0))
+      ((draw-pixmap ventana2) logo (make-posn x y))
     )]
     [(equal? lado 'ab)
         (begin
-          ((draw-pixmap ventana2) logo (make-posn x y))
+        ((draw-pixmap ventana2) fondo (make-posn 0 0))
+        ((draw-pixmap ventana2) logo (make-posn x y))
         )
     ]
     [(equal? lado 'izq)
       (begin
-        ((draw-pixmap ventana2) logo (make-posn x y))
+      ((draw-pixmap ventana2) fondo (make-posn 0 0))
+      ((draw-pixmap ventana2) logo (make-posn x y))
       )
     ]
     [(equal? lado 'der)
       (begin
-        ((draw-pixmap ventana2) logo (make-posn x y))
+      ((draw-pixmap ventana2) fondo (make-posn 0 0))
+      ((draw-pixmap ventana2) logo (make-posn x y))
       )
     ]
     [else
       (void)
     ]
   )
-
-  
-;si no se cumplen ningunas de las cond anteriores, usamos (void) para que no haga nada
-
-  ; se usa copy-viewport para pasar todo lo de ventana2 a la ventana principal 
+; se usa copy-viewport para pasar todo lo de ventana2 a la ventana principal 
   (copy-viewport ventana2 ventana)
   ((clear-viewport ventana2))
-)
+  )
 
 ;Eventos en el teclado para darle el movimiento usando key-value
 ;La logica es que cuando se mueva a la derecha vaya sumando en el eje x y cuando se mueva a la izq reste en el eje
@@ -128,4 +120,5 @@
 (copy-viewport ventana2 ventana)
 ((clear-viewport ventana2))
 
-(teclado 253 200 'down)
+(teclado 264 50 'down)
+
