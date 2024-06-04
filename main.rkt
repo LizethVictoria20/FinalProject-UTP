@@ -90,14 +90,74 @@
 
     ;Limites en y del laberinto
 
-    ;limite izquierdo 
+    ;limite 1 
     [(and(< x 118)(and(> y 125)(< y 500)))
      (begin
        (pacMan 118 y 'izq)
        (teclado 118 y (key-value(get-key-press ventana))))
     ]
 
-    ;limite derecho
+    ;limite 2
+    [(and(and(> x 126)(< x 170))(and(> y 125)(< y 425)))
+     (begin
+       (pacMan 126 y 'izq)
+       (teclado 126 y (key-value(get-key-press ventana))))
+    ]
+    [(and(and(> x 180)(< x 197))(and(> y 125)(< y 425)))
+     (begin
+       (pacMan 197 y 'izq)
+       (teclado 197 y (key-value(get-key-press ventana))))
+    ]
+
+    ;limite 3
+    [(and(and(> x 201)(< x 243))(and(> y 158)(< y 283)))
+     (begin
+       (pacMan 201 y 'izq)
+       (teclado 201 y (key-value(get-key-press ventana))))
+    ]
+    [(and(and(> x 253)(< x 270))(and(> y 158)(< y 283)))
+     (begin
+       (pacMan 270 y 'izq)
+       (teclado 270 y (key-value(get-key-press ventana))))
+    ]
+
+    ;limite 4
+    [(and(and(> x 271)(< x 313))(and(> y 125)(< y 197)))
+     (begin
+       (pacMan 271 y 'izq)
+       (teclado 271 y (key-value(get-key-press ventana))))
+    ]
+    [(and(and(> x 323)(< x 340))(and(> y 125)(< y 197)))
+     (begin
+       (pacMan 340 y 'izq)
+       (teclado 340 y (key-value(get-key-press ventana))))
+    ]
+
+    ;limite 5
+    [(and(and(> x 271)(< x 313))(and(> y 223)(< y 356)))
+     (begin
+       (pacMan 271 y 'izq)
+       (teclado 271 y (key-value(get-key-press ventana))))
+    ]
+    [(and(and(> x 323)(< x 339))(and(> y 272)(< y 358)))
+     (begin
+       (pacMan 339 y 'izq)
+       (teclado 339 y (key-value(get-key-press ventana))))
+    ]
+
+    ;limite 6
+    [(and(and(> x 340)(< x 383))(and(> y 271)(< y 420)))
+     (begin
+       (pacMan 340 y 'izq)
+       (teclado 340 y (key-value(get-key-press ventana))))
+    ]
+    [(and(and(> x 393)(< x 410))(and(> y 271)(< y 420)))
+     (begin
+       (pacMan 410 y 'izq)
+       (teclado 410 y (key-value(get-key-press ventana))))
+    ]
+    
+    ;limite 7
     [(and(> x 417)(and(> y 125)(< y 500)))
      (begin
        (pacMan 417 y 'izq)
@@ -174,7 +234,7 @@
        (pacMan x 369 'ab)
        (teclado x 369 (key-value(get-key-press ventana))))
     ]
-    [(and (and(> y 421)(< y 432))(and(> x 201)(< x 406)))
+    [(and (and(> y 421)(< y 432))(and(> x 201)(< x 422)))
      (begin
        (pacMan x 432 'ab)
        (teclado x 432 (key-value(get-key-press ventana))))
