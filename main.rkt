@@ -1,39 +1,66 @@
 #lang racket
 
 ;Ventana del Juego
-
 (require(lib "graphics.ss" "graphics"))
-(open-graphics)
+  (open-graphics)
 
 (define ventana (open-viewport "Pacman" 600 600))
 ;ventana 2 para el pre-preocesado para que al reflejar en V1 no deje rastro.
-
-(begin
-    ((draw-viewport ventana) "black"))
-    (define mensaje "fondo-in.jpg")
-    ((draw-pixmap ventana) mensaje (make-posn 50 50))
-
-(sleep 4)
 
 (define ventana2 (open-pixmap "ventana-invisible" 600 600))
 ;diseño del fondo con pixmap para crgar archivos jpg y png
 (define fondo "fondo.jpg")
 ((draw-pixmap ventana) fondo (make-posn 0 0))
 
-
 ;Intregro el logo (muñeco de pacman)
 (define logo "pacman.png")
 ((draw-pixmap ventana) logo (make-posn 50 40))
 
+;Definimos todo lo necesario para el timer
 
-;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo) 
+(define segundos 0)
+(define termino 0)
+(define segundosfinal "")
+(define juego-finalizado #f) ; Bandera para indicar si el juego ha finalizado o no
+
+(define (finalizar-juego final-time)
+  ; Código para mostrar la ventana de finalización
+  (define ventana-final (open-viewport "Fin del Juego" 300 200))
+  ((draw-solid-rectangle ventana-final) (make-posn 0 0) 300 200 "white")
+  ((draw-string ventana-final) (make-posn 30 50) "¡Juego terminado!")
+  ((draw-string ventana-final) (make-posn 30 80) (string-append "Tiempo: " final-time " segundos"))
+  (read-char) ; Espera hasta que el usuario presione una tecla para cerrar
+  (close-viewport ventana-final)
+  (close-viewport ventana)
+  (close-viewport ventana2)
+ )
+
+
+(define (timer)
+   (lambda ()
+     (let loop ()
+     ;set! es una forma especial que se usa para cambiar el valor de una variable que ya ha sido definida
+       (set! segundos (+ segundos 1))
+       (set! segundosfinal (number->string segundos))
+       (define segundos-str (number->string segundos))
+        ((draw-solid-rectangle ventana)(make-posn 430 10) 170 50 "yellow"); Borra el área del contador anterior
+       ((draw-string ventana) (make-posn 435 40) "TIEMPO :")
+       ((draw-string ventana) (make-posn 505 40) segundos-str) ; Dibuja el nuevo valor de los segundos
+       ((draw-string ventana) (make-posn 540 40) "segundos")
+       (sleep 1) ; Espera 1 segundo
+       (if juego-finalizado
+           (void) ; Si el juego ha finalizado, no continúes contando
+           (loop))))) ; Si el juego no ha finalizado, sigue contando
+
+
+;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo)
 ;Usando begin porque son varias acciones las que se van a cubrir
 
 
 (define (pacMan x y lado)
   ;Se usa if porque queremos que solo una orden se ejecute y solo una sea true.
   (cond
-    [(equal? lado 'ar) ;Referencia 
+    [(equal? lado 'ar) ;Referencia
       (begin
       ((draw-pixmap ventana2) fondo (make-posn 0 0))
       ((draw-pixmap ventana2) logo (make-posn x y))
@@ -60,7 +87,7 @@
       (void)
     ]
   )
-; se usa copy-viewport para pasar todo lo de ventana2 a la ventana principal 
+; se usa copy-viewport para pasar todo lo de ventana2 a la ventana principal
   (copy-viewport ventana2 ventana)
   ((clear-viewport ventana2))
   )
@@ -97,7 +124,16 @@
 
     ;Limites en y del laberinto
 
-    ;limite 1 
+    ;SE ACABO EL JUEGO---------------------------------------
+
+    [(and (or (> x 250)(< x 280)) (>= y 485))
+     (begin
+       (define final-time segundosfinal)
+       (finalizar-juego final-time) ; Función para mostrar la ventana de finalización
+       (set! juego-finalizado #t) ; Indicar que el juego ha finalizado
+       )]
+
+    ;limite 1
     [(and(< x 118)(and(> y 125)(< y 500)))
      (begin
        (pacMan 118 y 'izq)
@@ -141,7 +177,7 @@
     ]
 
     ;limite 5
-    [(and(and(> x 271)(< x 313))(and(> y 235)(< y 356)))
+    [(and(and(> x 271)(< x 313))(and(> y 223)(< y 356)))
      (begin
        (pacMan 271 y 'izq)
        (teclado 271 y (key-value(get-key-press ventana))))
@@ -158,12 +194,12 @@
        (pacMan 340 y 'izq)
        (teclado 340 y (key-value(get-key-press ventana))))
     ]
-    [(and(and(> x 393)(< x 410))(and(> y 235)(< y 420)))
+    [(and(and(> x 393)(< x 410))(and(> y 271)(< y 420)))
      (begin
        (pacMan 410 y 'izq)
        (teclado 410 y (key-value(get-key-press ventana))))
     ]
-    
+
     ;limite 7
     [(and(> x 417)(and(> y 125)(< y 500)))
      (begin
@@ -173,7 +209,7 @@
 
 
 
-    
+
     ;limites en x del laberinto
     ;lane 1
     [(and (and(> y 76)(< y 110))(and(> x 105)(< x 260)))
@@ -186,7 +222,7 @@
        (pacMan x 144 'ab)
        (teclado x 144 (key-value(get-key-press ventana))))
     ]
-    
+
     ;lane 2
     [(and (and(> y 76)(< y 110))(and(> x 274)(< x 480)))
      (begin
@@ -198,7 +234,7 @@
        (pacMan x 144 'ab)
        (teclado x 144 (key-value(get-key-press ventana))))
     ]
-    
+
     ;lane  3
     [(and (and(> y 148)(< y 190))(and(> x 201)(< x 406)))
      (begin
@@ -234,7 +270,7 @@
        (pacMan x 359 'ab)
        (teclado x 359 (key-value(get-key-press ventana))))
     ]
-    
+
     ;lane  6
     [(and (and(> y 369)(< y 411))(and(> x 201)(< x 406)))
      (begin
@@ -260,7 +296,7 @@
        (teclado x 520 (key-value(get-key-press ventana))))
     ]
 
-    
+
      ;lane  8
     [(and (and(> y 435)(< y 486))(and(> x 271)(< x 480)))
      (begin
@@ -272,7 +308,7 @@
        (pacMan x 520 'ab)
        (teclado x 520 (key-value(get-key-press ventana))))
     ]
-    
+
     ;evento teclado
     [(equal? tecla 'up)
       (begin
@@ -305,6 +341,9 @@
 ;nuevamente el copy-viewport
 (copy-viewport ventana2 ventana)
 ((clear-viewport ventana2))
+
+
+(timer) ; Iniciar el contador de segundos en un hilo separado
 
 (teclado 266 80 'down)
 
