@@ -30,6 +30,26 @@
 (define segundosfinal "")
 (define juego-finalizado #f) ; Bandera para indicar si el juego ha finalizado o no
 
+
+(define (timer)
+  (thread
+   (lambda ()
+     (let loop ()
+     ;set! es una forma especial que se usa para cambiar el valor de una variable que ya ha sido definida
+       (set! segundos (+ segundos 1))
+       (set! segundosfinal (number->string segundos))
+       (define segundos-str (number->string segundos))
+       ((draw-solid-rectangle ventana)(make-posn 430 530) 170 50 (make-rgb 1 0.6 0)); Borra el área del contador anterior
+       ((draw-string ventana) (make-posn 435 558) "TIEMPO :")
+       ((draw-string ventana) (make-posn 505 558) segundos-str) ; Dibuja el nuevo valor de los segundos
+       ((draw-string ventana) (make-posn 540 558) "segundos")
+       (sleep 1) ; Espera 1 segundo
+       (if juego-finalizado
+           (void) ; Si el juego ha finalizado, no continúes contando
+           (loop)))))) ; Si el juego no ha finalizado, sigue contando
+
+
+
 (define (finalizar-juego final-time)
   ; Código para mostrar la ventana de finalización
   (define ventana-final (open-viewport "Fin del Juego" 300 200))
@@ -41,32 +61,10 @@
   (close-viewport ventana)
   (close-viewport ventana2)
  )
-
-
-(define (timer)
-  (thread
-   (lambda ()
-     (let loop ()
-     ;set! es una forma especial que se usa para cambiar el valor de una variable que ya ha sido definida
-       (set! segundos (+ segundos 1))
-       (set! segundosfinal (number->string segundos))
-       (define segundos-str (number->string segundos))
-        ((draw-solid-rectangle ventana)(make-posn 430 530) 170 50 (make-rgb 1 0.6 0)); Borra el área del contador anterior
-       ((draw-string ventana) (make-posn 435 558) "TIEMPO :")
-       ((draw-string ventana) (make-posn 505 558) segundos-str) ; Dibuja el nuevo valor de los segundos
-       ((draw-string ventana) (make-posn 540 558) "segundos")
-       (sleep 1) ; Espera 1 segundo
-       (if juego-finalizado
-           (void) ; Si el juego ha finalizado, no continúes contando
-           (loop)))))) ; Si el juego no ha finalizado, sigue contando
-
-
-;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo)
 ;Usando begin porque son varias acciones las que se van a cubrir
 
 
 (define (pacMan x y lado)
-  ;Se usa if porque queremos que solo una orden se ejecute y solo una sea true.
   (cond
     [(equal? lado 'ar) ;Referencia
       (begin
@@ -103,7 +101,7 @@
 ;Eventos en el teclado para darle el movimiento usando key-value
 ;La logica es que cuando se mueva a la derecha vaya sumando en el eje x y cuando se mueva a la izq reste en el eje
 ;lo mismo con el eje y, abajo va sumando y arriba va restando
-;creamos tambien condiciones (if) para extralimitar el objeto y que no se salga de un límite establecido
+;creamos tambien condiciones para extralimitar el objeto y que no se salga de un límite establecido
 
 (define (teclado x y tecla)
 ;límites
@@ -285,18 +283,32 @@
        (pacMan x 385 'ab)
        (teclado x 385 (key-value(get-key-press ventana))))
     ]
+<<<<<<< HEAD
     [(and (and(> y 421)(< y 441))(and(> x 204)(< x 406)))
      (begin
        (pacMan x 441 'ab)
        (teclado x 441 (key-value(get-key-press ventana))))
+=======
+    [(and (and(> y 421)(< y 438))(and(> x 201)(< x 406)))
+     (begin
+       (pacMan x 438 'ab)
+       (teclado x 438 (key-value(get-key-press ventana))))
+>>>>>>> c94cefae9c4c137cc698a48815e821c7ea603efc
     ]
 
 
      ;lane  7
+<<<<<<< HEAD
     [(and (and(> y 452)(< y 486))(and(> x 100)(< x 260)))
      (begin
        (pacMan x 452 'ab)
        (teclado x 452 (key-value(get-key-press ventana))))
+=======
+    [(and (and(> y 450)(< y 486))(and(> x 100)(< x 260)))
+     (begin
+       (pacMan x 450 'ab)
+       (teclado x 450 (key-value(get-key-press ventana))))
+>>>>>>> c94cefae9c4c137cc698a48815e821c7ea603efc
     ]
     [(and (and(> y 503)(< y 520))(and(> x 100)(< x 260)))
      (begin
