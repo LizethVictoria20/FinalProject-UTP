@@ -7,6 +7,13 @@
 (define ventana (open-viewport "Pacman" 600 600))
 ;ventana 2 para el pre-preocesado para que al reflejar en V1 no deje rastro.
 
+(begin
+    ((draw-viewport ventana) "black"))
+    (define mensaje "fondo-in.jpg")
+    ((draw-pixmap ventana) mensaje (make-posn 50 50))
+
+(sleep 4)
+
 (define ventana2 (open-pixmap "ventana-invisible" 600 600))
 ;diseño del fondo con pixmap para crgar archivos jpg y png
 (define fondo "fondo.jpg")
