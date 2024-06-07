@@ -142,7 +142,7 @@
     ]
 
     ;limite 5
-    [(and(and(> x 269)(< x 313))(and(> y 223)(< y 356)))
+    [(and(and(> x 271)(< x 313))(and(> y 235)(< y 356)))
      (begin
        (pacMan 271 y 'izq)
        (teclado 271 y (key-value(get-key-press ventana))))
@@ -159,7 +159,7 @@
        (pacMan 340 y 'izq)
        (teclado 340 y (key-value(get-key-press ventana))))
     ]
-    [(and(and(> x 393)(< x 410))(and(> y 225)(< y 420)))
+    [(and(and(> x 393)(< x 410))(and(> y 235)(< y 420)))
      (begin
        (pacMan 410 y 'izq)
        (teclado 410 y (key-value(get-key-press ventana))))
