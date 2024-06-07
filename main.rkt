@@ -8,6 +8,14 @@
 (define ventana (open-viewport "Pacman" 600 600))
 ;ventana 2 para el pre-preocesado para que al reflejar en V1 no deje rastro.
 
+(begin
+    ((draw-viewport ventana) "black"))
+    (define mensaje "fondo-in.jpg")
+    ((draw-pixmap ventana) mensaje (make-posn 50 50))
+   
+
+    (sleep 4)
+
 (define ventana2 (open-pixmap "ventana-invisible" 600 600))
 ;diseño del fondo con pixmap para crgar archivos jpg y png
 (define fondo "fondo.jpg")
@@ -134,7 +142,7 @@
     ]
 
     ;limite 5
-    [(and(and(> x 271)(< x 313))(and(> y 223)(< y 356)))
+    [(and(and(> x 269)(< x 313))(and(> y 223)(< y 356)))
      (begin
        (pacMan 271 y 'izq)
        (teclado 271 y (key-value(get-key-press ventana))))
@@ -151,7 +159,7 @@
        (pacMan 340 y 'izq)
        (teclado 340 y (key-value(get-key-press ventana))))
     ]
-    [(and(and(> x 393)(< x 410))(and(> y 271)(< y 420)))
+    [(and(and(> x 393)(< x 410))(and(> y 225)(< y 420)))
      (begin
        (pacMan 410 y 'izq)
        (teclado 410 y (key-value(get-key-press ventana))))
@@ -234,7 +242,7 @@
        (pacMan x 369 'ab)
        (teclado x 369 (key-value(get-key-press ventana))))
     ]
-    [(and (and(> y 421)(< y 432))(and(> x 201)(< x 422)))
+    [(and (and(> y 421)(< y 432))(and(> x 201)(< x 406)))
      (begin
        (pacMan x 432 'ab)
        (teclado x 432 (key-value(get-key-press ventana))))
