@@ -37,6 +37,7 @@
 
 
 (define (timer)
+  (thread
    (lambda ()
      (let loop ()
      ;set! es una forma especial que se usa para cambiar el valor de una variable que ya ha sido definida
@@ -50,7 +51,7 @@
        (sleep 1) ; Espera 1 segundo
        (if juego-finalizado
            (void) ; Si el juego ha finalizado, no continúes contando
-           (loop))))) ; Si el juego no ha finalizado, sigue contando
+           (loop)))))) ; Si el juego no ha finalizado, sigue contando
 
 
 ;definimos por medio de (if) las posiciones que va a cubrir el logo usando X y Y para darle posición al objeto (logo)
