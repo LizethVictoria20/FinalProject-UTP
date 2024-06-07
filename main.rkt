@@ -283,32 +283,18 @@
        (pacMan x 385 'ab)
        (teclado x 385 (key-value(get-key-press ventana))))
     ]
-<<<<<<< HEAD
     [(and (and(> y 421)(< y 441))(and(> x 204)(< x 406)))
      (begin
        (pacMan x 441 'ab)
        (teclado x 441 (key-value(get-key-press ventana))))
-=======
-    [(and (and(> y 421)(< y 438))(and(> x 201)(< x 406)))
-     (begin
-       (pacMan x 438 'ab)
-       (teclado x 438 (key-value(get-key-press ventana))))
->>>>>>> c94cefae9c4c137cc698a48815e821c7ea603efc
     ]
 
 
      ;lane  7
-<<<<<<< HEAD
     [(and (and(> y 452)(< y 486))(and(> x 100)(< x 260)))
      (begin
        (pacMan x 452 'ab)
        (teclado x 452 (key-value(get-key-press ventana))))
-=======
-    [(and (and(> y 450)(< y 486))(and(> x 100)(< x 260)))
-     (begin
-       (pacMan x 450 'ab)
-       (teclado x 450 (key-value(get-key-press ventana))))
->>>>>>> c94cefae9c4c137cc698a48815e821c7ea603efc
     ]
     [(and (and(> y 503)(< y 520))(and(> x 100)(< x 260)))
      (begin
