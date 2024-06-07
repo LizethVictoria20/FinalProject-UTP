@@ -51,10 +51,10 @@
        (set! segundos (+ segundos 1))
        (set! segundosfinal (number->string segundos))
        (define segundos-str (number->string segundos))
-        ((draw-solid-rectangle ventana)(make-posn 430 10) 170 50 "yellow"); Borra el área del contador anterior
-       ((draw-string ventana) (make-posn 435 40) "TIEMPO :")
-       ((draw-string ventana) (make-posn 505 40) segundos-str) ; Dibuja el nuevo valor de los segundos
-       ((draw-string ventana) (make-posn 540 40) "segundos")
+        ((draw-solid-rectangle ventana)(make-posn 430 530) 170 50 (make-rgb 1 0.6 0)); Borra el área del contador anterior
+       ((draw-string ventana) (make-posn 435 558) "TIEMPO :")
+       ((draw-string ventana) (make-posn 505 558) segundos-str) ; Dibuja el nuevo valor de los segundos
+       ((draw-string ventana) (make-posn 540 558) "segundos")
        (sleep 1) ; Espera 1 segundo
        (if juego-finalizado
            (void) ; Si el juego ha finalizado, no continúes contando
