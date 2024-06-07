@@ -273,30 +273,30 @@
        (pacMan x 292 'ab)
        (teclado x 292 (key-value(get-key-press ventana))))
     ]
-    [(and (and(> y 342)(< y 359))(and(> x 143)(< x 320)))
+    [(and (and(> y 342)(< y 368))(and(> x 143)(< x 320)))
      (begin
-       (pacMan x 359 'ab)
-       (teclado x 359 (key-value(get-key-press ventana))))
+       (pacMan x 368 'ab)
+       (teclado x 368 (key-value(get-key-press ventana))))
     ]
 
     ;lane  6
-    [(and (and(> y 369)(< y 411))(and(> x 201)(< x 406)))
+    [(and (and(> y 385)(< y 411))(and(> x 204)(< x 406)))
      (begin
-       (pacMan x 369 'ab)
-       (teclado x 369 (key-value(get-key-press ventana))))
+       (pacMan x 385 'ab)
+       (teclado x 385 (key-value(get-key-press ventana))))
     ]
-    [(and (and(> y 421)(< y 432))(and(> x 201)(< x 406)))
+    [(and (and(> y 421)(< y 441))(and(> x 204)(< x 406)))
      (begin
-       (pacMan x 432 'ab)
-       (teclado x 432 (key-value(get-key-press ventana))))
+       (pacMan x 441 'ab)
+       (teclado x 441 (key-value(get-key-press ventana))))
     ]
 
 
      ;lane  7
-    [(and (and(> y 435)(< y 486))(and(> x 100)(< x 260)))
+    [(and (and(> y 452)(< y 486))(and(> x 100)(< x 260)))
      (begin
-       (pacMan x 435 'ab)
-       (teclado x 435 (key-value(get-key-press ventana))))
+       (pacMan x 452 'ab)
+       (teclado x 452 (key-value(get-key-press ventana))))
     ]
     [(and (and(> y 503)(< y 520))(and(> x 100)(< x 260)))
      (begin
@@ -306,10 +306,10 @@
 
 
      ;lane  8
-    [(and (and(> y 435)(< y 486))(and(> x 271)(< x 480)))
+    [(and (and(> y 450)(< y 486))(and(> x 271)(< x 480)))
      (begin
-       (pacMan x 435 'ab)
-       (teclado x 435 (key-value(get-key-press ventana))))
+       (pacMan x 450 'ab)
+       (teclado x 450 (key-value(get-key-press ventana))))
     ]
     [(and (and(> y 503)(< y 520))(and(> x 271)(< x 480)))
      (begin
