@@ -10,7 +10,7 @@
 (begin
     ((draw-viewport ventana) "black"))
     (define mensaje "fondo-in.jpg")
-    ((draw-pixmap ventana) mensaje (make-posn 50 50))
+    ((draw-pixmap ventana) mensaje (make-posn 0 0))
 
 (sleep 4)
 
